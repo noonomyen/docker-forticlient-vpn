@@ -1,0 +1,13 @@
+services:
+  openfortivpn:
+    build: .
+    container_name: openfortivpn
+    volumes:
+      - ./openfortivpn.conf:/etc/openfortivpn/config
+      - ./sockd.conf:/etc/sockd.conf
+    devices:
+      - /dev/ppp
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "1080:1080"
